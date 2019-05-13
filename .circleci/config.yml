@@ -1,0 +1,22 @@
+version: 2
+jobs:
+  one:
+    docker:
+      - image: circleci/php:7.1-node-browsers
+    steps:
+      - checkout
+      - run: echo "Okay new echo please!"
+      - run: sleep 5
+  two:
+    docker:
+      - image: circleci/php:7.1-node-browsers
+    steps:
+      - checkout
+      - run: echo "A more familiar hi"
+      - run: sleep 10
+workflows:
+  version: 2
+  one_and_two:
+    jobs:
+      - one
+      - two
